@@ -38,13 +38,13 @@
                     Command="{Binding SearchCommand}"
                     IsDefault="{Binding ElementName=SearchGrid, Path=IsKeyboardFocusWithin}">
                 <userControls:IconUserControl Width="20" Height="20" Visual="{StaticResource ni_search}"
-                                              Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" />
+                                              Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Loaded="IconUserControl_Loaded" />
             </Button>
         </Grid>
         <DataGrid Grid.Row="1" SelectionMode="Single"
                   ItemsSource="{Binding Results}" 
                   SelectedItem="{Binding SelectedResult}"
-                  IsReadOnly="True" AutoGenerateColumns="True">
+                  IsReadOnly="True" AutoGenerateColumns="True" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.CellStyle>
                 <Style TargetType="{x:Type DataGridCell}">
                     <Style.Triggers>

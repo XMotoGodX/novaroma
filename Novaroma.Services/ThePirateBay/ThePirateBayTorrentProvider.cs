@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Novaroma.Interface;
 using Novaroma.Interface.Download.Torrent;
 using Novaroma.Interface.Download.Torrent.Provider;
+using AngleSharp.Parser.Html;
 
 namespace Novaroma.Services.ThePirateBay {
 
@@ -102,7 +103,8 @@ namespace Novaroma.Services.ThePirateBay {
             using (var client = new NovaromaWebClient()) {
                 var html = await client.DownloadStringTaskAsync(url);
 
-                var document = DocumentBuilder.Html(html);
+                var parser = new HtmlParser();
+                var document = parser.Parse(html);
                 var items = document.QuerySelectorAll("table[id='searchResult'] tr");
 
                 foreach (var item in items) {

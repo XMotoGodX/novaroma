@@ -36,5 +36,15 @@ namespace Novaroma.Win.Views {
         private void Cancel_Button_Click(object sender, RoutedEventArgs e) {
             Close();
         }
+
+        private void DataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void IconUserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

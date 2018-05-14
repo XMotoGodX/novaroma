@@ -10,6 +10,7 @@ using Newtonsoft.Json.Linq;
 using Novaroma.Interface;
 using Novaroma.Interface.Download.Torrent;
 using Novaroma.Interface.Download.Torrent.Provider;
+using AngleSharp.Parser.Html;
 
 namespace Novaroma.Services.Kickass {
 
@@ -88,7 +89,8 @@ namespace Novaroma.Services.Kickass {
                     throw;
                 }
 
-                var document = DocumentBuilder.Html(html);
+                var parser = new HtmlParser();
+                var document = parser.Parse(html);
                 var items = document.All
                     .Where(n => n.TagName == "TR" && (n.ClassName == "even" || n.ClassName == "odd"));
 
